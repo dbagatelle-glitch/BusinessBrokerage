@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12-Month Apprenticeship Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2430;
+    --muted: #5b6676;
+    --line: #e2e6ec;
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --navy: #1f3a5f;
+    --accent: #b8862e;
+    --accent-soft: #f6efe1;
+    --green: #2f7a55;
+    --green-soft: #e7f3ec;
+    --amber: #9a6a12;
+    --amber-soft: #fbf3e2;
+    --red: #a23b3b;
+    --red-soft: #f8eaea;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px 64px; }
+
+  header.hero {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 16px 48px;
+  }
+  header.hero .inner { max-width: 960px; margin: 0 auto; }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12px;
+    font-weight: 600;
+    color: #e8c98c;
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1.15;
+    margin: 10px 0 14px;
+  }
+  .hero p { margin: 0; max-width: 640px; color: #d6deea; font-size: 17px; }
+  .meta { margin-top: 22px; font-size: 14px; color: #b7c3d4; }
+
+  h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 26px;
+    margin: 56px 0 6px;
+    color: var(--navy);
+  }
+  .lede { color: var(--muted); margin: 0 0 24px; }
+
+  /* Timeline bar */
+  .timeline {
+    display: grid;
+    grid-template-columns: 1.6fr 2fr 2fr 4fr 4fr;
+    gap: 4px;
+    margin: 36px 0 8px;
+  }
+  html { scroll-behavior: smooth; }
+  .phase { scroll-margin-top: 16px; }
+  .timeline a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  }
+  .timeline a:hover, .timeline a:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(31, 58, 95, .25);
+    filter: brightness(1.1);
+    outline: none;
+  }
+  .phase:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .back-top {
+    display: inline-block;
+    margin: 0 24px 14px;
+    font-size: 13px;
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .back-top:hover { text-decoration: underline; }
+  @media print { .back-top { display: none; } }
+  .t0 { background: var(--accent); }
+  .t1 { background: #6b86a8; }
+  .t2 { background: #4a6a92; }
+  .t3 { background: #2e4f7a; }
+  .t4 { background: var(--navy); }
+  .timeline span { display: block; font-weight: 400; opacity: .85; font-size: 12px; }
+
+  /* Phases */
+  .phase {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .phase-head {
+    display: flex;
+    gap: 18px;
+    align-items: baseline;
+    padding: 20px 24px 6px;
+    flex-wrap: wrap;
+  }
+  .months {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    min-width: 110px;
+  }
+  .phase h3 {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 21px;
+  }
+  .phase .goal { padding: 0 24px; color: var(--muted); margin: 4px 0 12px; }
+  .phase ul { margin: 0; padding: 0 24px 16px 44px; }
+  .phase li { margin: 6px 0; }
+  .checkpoint {
+    background: var(--accent-soft);
+    border-top: 1px solid #ecdfc4;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  .checkpoint strong { color: var(--amber); }
+
+  /* Success */
+  .outcomes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .outcome {
+    border-radius: 10px;
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+  }
+  .outcome h4 { margin: 0 0 10px; font-size: 16px; }
+  .outcome ul { margin: 0; padding-left: 18px; font-size: 15px; }
+  .outcome li { margin: 6px 0; }
+  .strong { background: var(--green-soft); border-color: #cfe5d8; }
+  .strong h4 { color: var(--green); }
+  .ok { background: var(--amber-soft); border-color: #efdfbd; }
+  .ok h4 { color: var(--amber); }
+  .nofit { background: var(--red-soft); border-color: #eccfcf; }
+  .nofit h4 { color: var(--red); }
+
+  .note {
+    margin-top: 20px;
+    padding: 18px 22px;
+    border-left: 4px solid var(--accent);
+    background: var(--card);
+    border-radius: 0 8px 8px 0;
+    font-size: 15px;
+  }
+
+  /* Two columns */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .panel h4 { margin: 0 0 10px; font-size: 16px; color: var(--navy); }
+  .panel ul { margin: 0; padding-left: 18px; font-size: 15px; }
+  .panel li { margin: 7px 0; }
+
+  footer { margin-top: 56px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+  @media (max-width: 760px) {
+    .outcomes, .cols { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; }
+    .phase-head { gap: 4px; flex-direction: column; }
+  }
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    header.hero { padding: 28px 16px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .phase, .outcome, .panel { break-inside: avoid; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2 { margin-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <div class="eyebrow">Proposed Approach</div>
+    <h1>A 12-Month Apprenticeship in Business Brokerage</h1>
+    <p>A structured plan for learning the business under your guidance, contributing to live deals early, and building toward an independent book of business.</p>
+    <div class="meta">Prepared by Dave Bagatelle, CFA &nbsp;·&nbsp; For discussion with Marc Lazarus</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav id="top" class="timeline" aria-label="Plan timeline">
+    <a class="t0" href="#align">Align<span>Before Month 1</span></a>
+    <a class="t1" href="#learn">Learn<span>Months 1–2</span></a>
+    <a class="t2" href="#contribute">Contribute<span>Months 3–4</span></a>
+    <a class="t3" href="#lead">Lead with support<span>Months 5–8</span></a>
+    <a class="t4" href="#build">Build my own book<span>Months 9–12</span></a>
+  </nav>
+
+  <h2>The plan</h2>
+  <p class="lede">We start by agreeing on how we'll work together, then move through four phases, each with a clear goal and a checkpoint we can use to decide when I'm ready for more responsibility.</p>
+
+  <section class="phase" id="align">
+    <div class="phase-head">
+      <div class="months">Before Month 1</div>
+      <h3>Align on the working relationship</h3>
+    </div>
+    <p class="goal">Agree on terms and expectations in writing before the work begins.</p>
+    <ul>
+      <li>Agree on the form of the arrangement (independent contractor or agent agreement under your Transworld office)</li>
+      <li>Commission split, and how it evolves with volume and self-sourced deals</li>
+      <li>How leads and listings are shared during the early phases</li>
+      <li>Who covers training, licensing, marketing, and listing costs</li>
+      <li>License sponsorship under your brokerage</li>
+      <li>Non-compete and non-solicit terms, and ownership of client relationships</li>
+      <li>Expected time commitment and how we'll check in (for example, a weekly pipeline review)</li>
+      <li>Agree on this plan and its checkpoints as the shared roadmap</li>
+    </ul>
+    <div class="checkpoint"><strong>Checkpoint:</strong> A signed agreement and a shared understanding of roles, economics, and expectations.</div>
+    <a class="back-top" href="#top">↑ Back to timeline</a>
+  </section>
+
+  <section class="phase" id="learn">
+    <div class="phase-head">
+      <div class="months">Months 1–2</div>
+      <h3>Learn the machine</h3>
+    </div>
+    <p class="goal">Understand how deals actually get done in your office.</p>
+    <ul>
+      <li>Attend Transworld Training - Learn the Transworld systems, listing process, and CRM</li>
+      <li>Complete the NJ real estate salesperson license (75-hour course and exam), sponsored under your brokerage</li>
+      <li>Sit in on seller meetings, buyer calls, and negotiations wherever appropriate</li>
+      <li>Review 10 to 15 closed deal files start to finish: engagement letter, valuation, CIM, LOI, purchase agreement, closing statement</li>
+      <li>Build working knowledge of SBA 7(a) lending</li>
+      <li>Study why recent deals fell apart, not just why they closed</li>
+    </ul>
+    <div class="checkpoint"><strong>Checkpoint:</strong> I can explain the full deal lifecycle and the main ways deals die: valuation gaps, weak financials, failed financing, lease issues, and seller cold feet.</div>
+    <a class="back-top" href="#top">↑ Back to timeline</a>
+  </section>
+
+  <section class="phase" id="contribute">
+    <div class="phase-head">
+      <div class="months">Months 3–4</div>
+      <h3>Do the work alongside you</h3>
+    </div>
+    <p class="goal">Contribute real work product on live deals.</p>
+    <ul>
+      <li>Recast seller financials and prepare valuations for your review</li>
+      <li>Draft CIMs and listing teasers</li>
+      <li>Screen buyers, manage NDAs, and run data rooms</li>
+      <li>Lead buyer calls with you listening in</li>
+      <li>Start building a referral network: 15 to 20 meetings with CPAs, estate attorneys, wealth advisors, and SBA lenders in Bergen County</li>
+    </ul>
+    <div class="checkpoint"><strong>Checkpoint:</strong> You trust my valuations and CIMs with light edits.</div>
+    <a class="back-top" href="#top">↑ Back to timeline</a>
+  </section>
+
+  <section class="phase" id="lead">
+    <div class="phase-head">
+      <div class="months">Months 5–8</div>
+      <h3>Run deals with a safety net</h3>
+    </div>
+    <p class="goal">Serve as primary point of contact on a few engagements.</p>
+    <ul>
+      <li>Lead 2 to 3 assigned listings, with you as backstop</li>
+      <li>Run my first seller pitches for listing agreements</li>
+      <li>Negotiate an LOI with your coaching</li>
+      <li>Carry a deal through diligence and closing</li>
+      <li>Begin sourcing my own seller leads</li>
+    </ul>
+    <div class="checkpoint"><strong>Checkpoint:</strong> I've taken a deal from listing through accepted LOI largely on my own.</div>
+    <a class="back-top" href="#top">↑ Back to timeline</a>
+  </section>
+
+  <section class="phase" id="build">
+    <div class="phase-head">
+      <div class="months">Months 9–12</div>
+      <h3>Build my own book</h3>
+    </div>
+    <p class="goal">Prove I can generate business, not just service it.</p>
+    <ul>
+      <li>Sign listings I sourced myself</li>
+      <li>Maintain a consistent weekly prospecting cadence with business owners</li>
+      <li>Commit to a long-term niche and deal segment</li>
+      <li>Begin a professional credential (IBBA CBI or M&amp;A Source M&amp;AMI)</li>
+      <li>Sit down together to agree on next steps</li>
+    </ul>
+    <div class="checkpoint"><strong>Checkpoint:</strong> A self-sourced pipeline that is growing without your help.</div>
+    <a class="back-top" href="#top">↑ Back to timeline</a>
+  </section>
+
+  <h2>What success looks like at 12 months</h2>
+  <p class="lede">Clear targets so we both know whether this is working.</p>
+
+  <div class="outcomes">
+    <div class="outcome strong">
+      <h4>Strong outcome</h4>
+      <ul>
+        <li>1 to 3 closed deals where I played a meaningful role</li>
+        <li>2 or more listings I sourced myself</li>
+        <li>10 or more active seller conversations in the pipeline</li>
+        <li>A referral network that sends leads unprompted</li>
+        <li>Able to lead a deal end to end</li>
+      </ul>
+    </div>
+    <div class="outcome ok">
+      <h4>Acceptable outcome</h4>
+      <ul>
+        <li>At least one closing I helped drive</li>
+        <li>A first self-sourced listing signed</li>
+        <li>A clear view of my segment and niche</li>
+      </ul>
+    </div>
+    <div class="outcome nofit">
+      <h4>Signs it isn't the right fit</h4>
+      <ul>
+        <li>Prospecting feels like a grind rather than the job</li>
+        <li>The income ramp looks unworkable even with a growing pipeline</li>
+        <li>No path to the deal types that use my strengths</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">Closings typically lag effort by 6 to 12 months in this business. A modest first year with a strong pipeline is a better signal than one lucky deal and nothing behind it.</div>
+
+  <h2>What I bring</h2>
+  <p class="lede">How my background adds value to your practice from day one.</p>
+
+  <div>
+    <div class="panel">
+      <ul>
+        <li>CFA charterholder with 25+ years in financial services strategy</li>
+        <li>Valuation, financial analysis, and data skills to support your deals from day one</li>
+        <li>A network across wealth management and insurance, a natural source of succession-driven sellers</li>
+        <li>Experience running complex, multi-stakeholder programs and client relationships</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>Draft for discussion. Licensing and regulatory points to be confirmed with the NJ Real Estate Commission and counsel as appropriate.</footer>
+</div>
+
+</body>
+</html>
